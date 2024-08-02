@@ -7,6 +7,8 @@ const router= express.Router()
 
 
 router.post('/signup',userMiddleware.validateCreateRequest,userController.signUp)
+router.post('/signin',userMiddleware.validateCreateRequest,userController.signIn)
+
 
 
 
