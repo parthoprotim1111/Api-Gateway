@@ -1,6 +1,5 @@
 'use strict';
 const bcrypt = require('bcrypt');
-const {ServerConfig} = require('../config') 
 const {
   Model
 } = require('sequelize');
@@ -15,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.belongsToMany(models.Role,{
+        through: 'User_Role',
+        as: 'role'
+      })
     }
   }
   User.init({

@@ -2,7 +2,7 @@ const express = require('express');
 const rateLimit = require('express-rate-limit')
 const { ServerConfig } = require('./config');
 const apiRoutes = require('./routes');
-const { createProxyMiddleware } = require('http-proxy-middleware')
+const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
 
 const limiter= rateLimit({
@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // to parse JSON bodies
 
 app.use(limiter);
+
 
 app.use('/flightService', createProxyMiddleware({
     target: ServerConfig.FLIGHT_SERVICE,
@@ -30,9 +31,8 @@ app.use('/bookingService', createProxyMiddleware({
 }));
 
 
-
 app.use('/api', apiRoutes);
 
-app.listen(ServerConfig.PORT, () => {
+app.listen(ServerConfig.PORT,async () => {
     console.log(`Successfully started the server on PORT : ${ServerConfig.PORT}`);
 });

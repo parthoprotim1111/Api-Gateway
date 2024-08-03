@@ -9,19 +9,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user_id: {
+      UserId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references:{
-          model: 'Users',
+          model: 'users',
           key: 'id'
         }
       },
-      role_id: {
+      RoleId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references:{
-          model: 'Roles',
+          model: 'roles',
           key: 'id'
         }
       },
